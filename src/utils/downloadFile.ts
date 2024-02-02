@@ -1,5 +1,5 @@
 import { Capacitor } from "@capacitor/core";
-import { Filesystem } from "@capacitor/filesystem";
+import { Directory, Filesystem } from "@capacitor/filesystem";
 
 function downloadURI(uri: string, name: string) {
   var element = document.createElement("a");
@@ -15,6 +15,7 @@ const downloadFile = (uri: string, name: string) => {
   if (Capacitor.isNativePlatform()) {
     Filesystem.downloadFile({
       path: name,
+      directory: Directory.Documents,
       url: uri,
       progress: true,
     });
